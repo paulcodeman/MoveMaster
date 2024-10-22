@@ -77,7 +77,3 @@ Contributions are welcome! Please open an issue or submit a pull request if you'
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-<reflection> Этот код представляет собой полную документацию для библиотеки FlexiMove в формате Markdown. Он структурирован и включает все необходимые разделы для пользователей и разработчиков. </reflection>
-<reward>0.95</reward>
