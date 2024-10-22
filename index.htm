@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movable Elements Demo</title>
+    <style>
+        .movable-box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: inline-block;
+            margin: 20px;
+            position: relative;
+            z-index: 1; /* Начальное значение z-index */
+        }
+    </style>
+</head>
+<body>
+<h1>Movable Elements Demo</h1>
+
+<!-- Movable on X-axis only -->
+<div class="movable-box" data-movable="true" data-move-axis="x">
+    Move on X-axis
+</div>
+
+<!-- Movable on Y-axis only -->
+<div class="movable-box" data-movable="true" data-move-axis="y">
+    Move on Y-axis
+</div>
+
+<!-- Movable on Z-axis only -->
+<div class="movable-box" data-movable="true" data-move-axis="z">
+    Move on Z-axis
+</div>
+
+<!-- Movable on XY-axis -->
+<div class="movable-box" data-movable="true" data-move-axis="xy">
+    Move on XY-axis
+</div>
+
+<!-- Movable on XZ-axis -->
+<div class="movable-box" data-movable="true" data-move-axis="xz">
+    Move on XZ-axis
+</div>
+
+<!-- Movable on YZ-axis -->
+<div class="movable-box" data-movable="true" data-move-axis="yz">
+    Move on YZ-axis
+</div>
+
+<!-- Movable on XYZ-axis -->
+<div class="movable-box" data-movable="true" data-move-axis="xyz">
+    Move on XYZ-axis
+</div>
+
+<!-- Movable with step size -->
+<div class="movable-box" data-movable="true" data-move-axis="xy" data-move-step="10">
+    Move with step 10px
+</div>
+
+<!-- Movable with grid snapping -->
+<div class="movable-box" data-movable="true" data-move-axis="xy" data-move-grid="20">
+    Snap to grid 20px
+</div>
+
+<!-- Movable with boundary limits -->
+<div class="movable-box" data-movable="true" data-move-axis="xy" data-move-boundary="0,0,300,300">
+    Move within boundaries (300x300)
+</div>
+<script src="./MoveMaster.js"></script>
+</body>
+</html>
