@@ -1,79 +1,47 @@
 # FlexiMove
 
-FlexiMove is a lightweight JavaScript library for moving HTML elements along specified axes (X, Y, Z) with intuitive drag-and-drop functionality.
+JavaScript-эксперимент с перемещением DOM-элементов мышью. Имя проекта в коде и
+документации — **FlexiMove**; репозиторий сохраняет slug **MoveMaster**, чтобы не
+изменять опубликованный адрес
+[демонстрации](https://paulcodeman.github.io/MoveMaster/).
 
-## Features
-- Move elements freely along the X, Y, and Z axes.
-- Support for custom step sizes and grid snapping.
-- Boundary limits to restrict movement within specified areas.
-- Easy to integrate with any web project.
+## Подключение
 
-## Installation
+В репозитории есть [fleximove.js](fleximove.js), а не minified-сборка или отдельный CDN.
+Подключайте существующий файл после разметки элементов, когда `document.body` уже создан:
 
-You can include FlexiMove in your project by downloading the script file or using a CDN. 
-
-### Using CDN
 ```html
-<script src="https://cdn.example.com/fleximove.min.js"></script>
+<div data-movable="true" data-move-axis="xy">Переместите меня</div>
+<script src="fleximove.js"></script>
 ```
 
-### Local Installation
-1. Download the `fleximove.min.js` file.
-2. Include it in your HTML:
-```html
-<script src="path/to/fleximove.min.js"></script>
-```
+Скрипт обрабатывает исходные элементы после `DOMContentLoaded` и наблюдает за
+добавляемыми элементами через `MutationObserver`.
 
-## Usage
+## Параметры, применяемые текущим кодом
 
-To make an element movable, add the `data-movable` attribute and specify the `data-move-axis` attribute.
+| Атрибут | Поведение |
+| --- | --- |
+| `data-movable="true"` | Включает обработчики перемещения. |
+| `data-move-axis` | `x`/`y` разрешают соответствующее смещение; `z` увеличивает CSS `z-index`, а не создаёт пространственное перемещение. |
+| `data-move-grid` | Округляет смещение по X/Y до шага сетки. |
+| `data-move-boundary` | Ограничивает смещение: `minX,minY,maxX,maxY`. |
 
-### HTML Structure
-```html
-<div class="movable-box" data-movable="true" data-move-axis="xy">
-    Move me!
-</div>
-```
+`step`, `lock`, `inertia`, `speed`, `restrict`, `direction` и `snap` читаются в
+переменные, но не применяются обработчиком движения. Они не заявлены как рабочие
+возможности. Реализация использует mouse-события; touch/pointer-поддержка не обещается.
 
-### Options
-- `data-move-axis`: Specifies the axes along which the element can move (e.g., `x`, `y`, `z`, `xy`, `xz`, `yz`, `xyz`).
-- `data-move-step`: Defines the movement step size (in pixels).
-- `data-move-grid`: Enables grid snapping with specified grid size (in pixels).
-- `data-move-boundary`: Restricts movement within defined boundaries (in the format `minX,minY,maxX,maxY`).
+## Структура и просмотр
 
-## Examples
+- [fleximove.js](fleximove.js) — библиотечный файл.
+- [index.html](index.html) — существующая демонстрация.
+- `.github/workflows/static.yml` — публикация GitHub Pages.
 
-### Moving on the X-axis
-```html
-<div class="movable-box" data-movable="true" data-move-axis="x">
-    Move on X-axis
-</div>
-```
+Для локального просмотра используйте статический сервер из корня, например
+`python -m http.server 8000 --bind 127.0.0.1`, затем откройте `http://127.0.0.1:8000/`.
+Код и public API при оформлении не менялись; интерактивные сценарии не тестировались.
 
-### Moving on the XY-axis with Step Size
-```html
-<div class="movable-box" data-movable="true" data-move-axis="xy" data-move-step="10">
-    Move with step 10px
-</div>
-```
+## Условия исходного проекта
 
-### Moving within Boundaries
-```html
-<div class="movable-box" data-movable="true" data-move-axis="xy" data-move-boundary="0,0,300,300">
-    Move within boundaries (300x300)
-</div>
-```
-
-## Contribution
-
-Contributions are welcome! Please open an issue or submit a pull request if you'd like to contribute.
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeature`).
-3. Make your changes and commit them (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
-5. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Исходный README заявляет MIT. Отдельного файла лицензии в текущем дереве нет;
+это обновление не добавляет и не меняет лицензию.
